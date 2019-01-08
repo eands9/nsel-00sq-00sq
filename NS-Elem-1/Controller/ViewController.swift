@@ -46,9 +46,14 @@ class ViewController: UIViewController {
     }
     
     func askQuestion(){
-        let numA = Int.random(in: 10000...1000000)
-        questionLabel.text = "* \(numA) ÷ 111"
-        answerCorrect = Double(numA) / 111
+        let randomNum1 = Int.random(in: 11...49)
+        let numA = Int.random(in: randomNum1 - 2...randomNum1 + 2)
+        let numB = Int.random(in: randomNum1 - 2...randomNum1 + 2)
+        let numC = Int.random(in: randomNum1 - 2...randomNum1 + 2)
+        let numD = Int.random(in: randomNum1 - 2...randomNum1 + 2)
+        
+        answerCorrect = Double(numA * numB * numC * numD)
+        questionLabel.text = "* \(numA) X \(numB) X \(numC) X \(numD)"
     }
     
     @IBAction func showBtn(_ sender: Any) {
