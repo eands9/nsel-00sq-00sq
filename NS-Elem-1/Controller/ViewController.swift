@@ -23,8 +23,8 @@ class ViewController: UIViewController {
     var timer = Timer()
     var counter = 0.0
     var questionTxt : String = ""
-    var answerCorrect = 0.00
-    var answerUser = 0.00
+    var answerCorrect = 0
+    var answerUser = 0
     var isShow: Bool = false
     
     let congratulateArray = ["Great Job", "Excellent", "Way to go", "Alright", "Right on", "Correct", "Well done", "Awesome","Give me a high five"]
@@ -46,14 +46,14 @@ class ViewController: UIViewController {
     }
     
     func askQuestion(){
-        let randomNum1 = Int.random(in: 11...49)
-        let numA = Int.random(in: randomNum1 - 2...randomNum1 + 2)
-        let numB = Int.random(in: randomNum1 - 2...randomNum1 + 2)
-        let numC = Int.random(in: randomNum1 - 2...randomNum1 + 2)
-        let numD = Int.random(in: randomNum1 - 2...randomNum1 + 2)
-        
-        answerCorrect = Double(numA * numB * numC * numD)
-        questionLabel.text = "* \(numA) X \(numB) X \(numC) X \(numD)"
+        let randomNum1 = Int.random(in: 5...19)
+        let randomNum2 = Int.random(in: 2...6)
+        let randomNum3 = randomNum1 + randomNum2
+        let numA = randomNum1
+        let numB = randomNum3
+  
+        answerCorrect = (numB * numB) - (numA * numA)
+        questionLabel.text = "\(numB)sq - \(numA)sq"
     }
     
     @IBAction func showBtn(_ sender: Any) {
@@ -62,9 +62,9 @@ class ViewController: UIViewController {
     }
     
     func checkAnswer(){
-        answerUser = (answerTxt.text! as NSString).doubleValue
+        answerUser = (answerTxt.text! as NSString).integerValue
         
-        if answerUser >= (answerCorrect * 0.95) && answerUser <= (answerCorrect * 1.05) && isShow == false {
+        if answerUser == answerCorrect && isShow == false {
             correctAnswers += 1
             numberAttempts += 1
             updateProgress()
