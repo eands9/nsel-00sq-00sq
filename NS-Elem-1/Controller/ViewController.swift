@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         let numB = randomNum3
   
         answerCorrect = (numB * numB) - (numA * numA)
-        questionLabel.text = "\(numB)sq - \(numA)sq"
+        questionLabel.text = "\(numB)² - \(numA)²"
     }
     
     @IBAction func showBtn(_ sender: Any) {
